@@ -60,7 +60,7 @@ async def on_message(message):
         response = dad_jokes[random_index]
         await message.channel.send(response)
 
-    if message.condent.startswith("d!help"):
+    if message.content.startswith("d!help"):
         response = "Type `d!help` to see a list of words that I will respond to!"
         await message.channel.send(response)
 
