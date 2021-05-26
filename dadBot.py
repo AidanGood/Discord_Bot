@@ -13,7 +13,7 @@ client = discord.Client()
 dad_jokes = ["I\'m afraid for the calendar. Its days are numbered.", "OSU players need hand therapy", "Owls have horns",
              "You can game on a Mac", "The Fortnite Team Captain is really cool", "We should emulate the french more, down with the presidency!",
              "Singing in the shower is fun until you get soap in your mouth. Then it's a soap opera.", "How do you follow Will Smith in the snow?" "You follow the fresh prints.",
-             "What did the ocean say to the beach?" "Nothing, it just waved.", "I only know 25 letters of the alphabet. I don't know y."]
+             ,"What did the ocean say to the beach?" "Nothing, it just waved.", "I only know 25 letters of the alphabet. I don't know y."]
 
 ''' E-sports food channel ID: 754131940243931199 
     Test server food channel ID: 846089092281401354
