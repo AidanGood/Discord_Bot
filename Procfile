@@ -1,2 +1,2 @@
-web: python dad-bot5695
-worker: python dad-bot5695
+web: python dadBot.py
+worker: python dadBot.py
