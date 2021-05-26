@@ -84,6 +84,10 @@ async def on_message(message):
         else:
             response = "That's Mr. Club President Jyro to you!"
         await message.channel.send(response)
+    elif "food" in message.content:
+        response = "I have found the food channel"
+        channel = client.get_channel(754131940243931199)
+        await channel.send(response)
 
     # Dad specific Responses
     elif "dad" in message.content.lower():
