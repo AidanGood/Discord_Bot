@@ -65,7 +65,7 @@ async def on_message(message):
         await message.channel.send(response)
 
     # Misc
-    if "shut up" in message.content.lower():
+    if "shut up" in message.content.lower() or "stfu" in message.content.lower():
         person = str(message.author.display_name)
         response = f"Hey {person}, that wasn\'t very nice, so please apologize to the whole server and then take your own advice and \"shut the \*\*\*\* up\"."
         await message.channel.send(response)
@@ -80,7 +80,7 @@ async def on_message(message):
         await message.channel.send(response)
     elif " jyro" in message.content.lower():
         if "president" in message.content.lower():
-            response = "Someday I will overthrow this government..."
+            response = "Not my president"
         else:
             response = "That's Mr. Club President Jyro to you!"
         await message.channel.send(response)
@@ -105,9 +105,18 @@ async def on_message(message):
             person = str(message.author.display_name)
             response = f"Hello {person}, keep up the great work!"
             await message.channel.send(response)
-        else:
-            response = "Someone mention me?"
+        elif "thanks dad" in message.content.lower():
+            response = "No problem!"
             await message.channel.send(response)
+        elif "dad bot best bot" in message.content.lower():
+            person = str(message.author.display_name)
+            response = f"{person} best person"
+            await message.channel.send(response)
+        else:
+            rand_int = random.int(0,1)
+            if rand_int > 0.8:
+                response = "Someone mention me?"
+                await message.channel.send(response)
 
     # Infamous "Hi __ , I'm Dad!"
     else:
