@@ -67,8 +67,7 @@ async def on_message(message):
     # Misc
     if "shut up" in message.content.lower():
         person = str(message.author.display_name)
-        response = f"Hey {person}, that wasn\'t very nice, so please apologize to the whole serve and then \
-                    take your own advice and \"shut the **** up\"."
+        response = f"Hey {person}, that wasn\'t very nice, so please apologize to the whole serve and then take your own advice and \"shut the \*\*\*\* up\"."
         await message.channel.send(response)
     elif "play" in message.content.lower():
         response = "Are ya winning son?"
