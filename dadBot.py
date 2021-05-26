@@ -10,13 +10,16 @@ load_dotenv()
 
 client = discord.Client()
 
-dad_jokes = ["I\'m afraid for the calendar. Its days are numbered.", "OSU players need hand therapy", "Owls have horns",
-             "You can game on a Mac", "The Fortnite Team Captain is really cool",
+dad_jokes = ["I\'m afraid for the calendar. Its days are numbered.", "Owls have horns",
+             "The Fortnite Team Captain is really cool",
              "We should emulate the french more, down with the presidency!",
              "Singing in the shower is fun until you get soap in your mouth. Then it's a soap opera.",
-             "How do you follow Will Smith in the snow?" "You follow the fresh prints.",
+             "How do you follow Will Smith in the snow? You follow the fresh prints.",
              "What did the ocean say to the beach?" "Nothing, it just waved.",
-             "I only know 25 letters of the alphabet. I don't know y."]
+             "I only know 25 letters of the alphabet. I don't know y.",
+             "What did one wall say to the other? I'll meet you at the corner.",
+             "What did the zero say to the eight? That belt looks good on you.",
+             "I asked my dog what's two minus two. He said nothing."]
 
 ''' E-sports food channel ID: 754131940243931199 
     Test server food channel ID: 846089092281401354
