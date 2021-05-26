@@ -11,7 +11,9 @@ load_dotenv()
 client = discord.Client()
 
 dad_jokes = ["I\'m afraid for the calendar. Its days are numbered.", "OSU players need hand therapy", "Owls have horns",
-             "You can game on a Mac", "The Fortnite Team Captain is really cool"]
+             "You can game on a Mac", "The Fortnite Team Captain is really cool", "We should emulate the french more, down with the presidency!",
+             "Singing in the shower is fun until you get soap in your mouth. Then it's a soap opera.", "How do you follow Will Smith in the snow?" "You follow the fresh prints.",
+             "What did the ocean say to the beach?" "Nothing, it just waved.", "I only know 25 letters of the alphabet. I don't know y."]
 
 ''' E-sports food channel ID: 754131940243931199 
     Test server food channel ID: 846089092281401354
@@ -28,7 +30,7 @@ async def background_task():
             if {gmt.tm_hour, gmt.tm_min, gmt.tm_sec} == {8, 20, 0}:  # Bison Time is 8:20 GMT
                 if gmt.tm_min == 20:
                     response = "It's Bison Time!"
-                    channel = client.get_channel(846089092281401354)
+                    channel = client.get_channel(754131940243931199)
                     await channel.send(response)
             await asyncio.sleep(1)
         except Exception as e:
