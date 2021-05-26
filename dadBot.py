@@ -67,7 +67,7 @@ async def on_message(message):
     # Misc
     if "shut up" in message.content.lower():
         person = str(message.author.display_name)
-        response = f"Hey {person}, that wasn\'t very nice, so please apologize to the whole serve and then take your own advice and \"shut the \*\*\*\* up\"."
+        response = f"Hey {person}, that wasn\'t very nice, so please apologize to the whole server and then take your own advice and \"shut the \*\*\*\* up\"."
         await message.channel.send(response)
     elif "play" in message.content.lower():
         response = "Are ya winning son?"
@@ -75,10 +75,10 @@ async def on_message(message):
     elif "owl" in message.content.lower():
         response = "Did you know that the Great Horned Owl doesn't actually have horns?"
         await message.channel.send(response)
-    elif "lost" in message.content.lower():
+    elif " lost" in message.content.lower():
         response = "Don't worry, I'm sure you will do better next time."
         await message.channel.send(response)
-    elif "jyro" in message.content.lower():
+    elif " jyro" in message.content.lower():
         if "president" in message.content.lower():
             response = "Someday I will overthrow this government..."
         else:
@@ -111,31 +111,31 @@ async def on_message(message):
 
     # Infamous "Hi __ , I'm Dad!"
     else:
-        if "im" in message.content:
+        if "im " in message.content:
             new_message = message.content[message.content.find("im") + 3:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "Im" in message.content:
+        elif "Im " in message.content:
             new_message = message.content[message.content.find("Im") + 3:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "i'm" in message.content:
+        elif "i'm " in message.content:
             new_message = message.content[message.content.find("i'm") + 4:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "I'm" in message.content:
+        elif "I'm " in message.content:
             new_message = message.content[message.content.find("I'm") + 4:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "i am" in message.content:
+        elif "i am " in message.content:
             new_message = message.content[message.content.find("i am") + 5:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "I am" in message.content:
+        elif "I am " in message.content:
             new_message = message.content[message.content.find("I am") + 5:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "lm" in message.content:
+        elif "lm " in message.content:
             new_message = message.content[message.content.find("lm") + 3:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
