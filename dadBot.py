@@ -53,7 +53,8 @@ async def on_message(message):
 
     # "Commands"
     if message.content.startswith("d!joke"):
-        response = random.choice(dad_jokes)
+        random_index = random.randint(0, len(dad_jokes) - 1)
+        response = dad_jokes[random_index]
         await message.channel.send(response)
 
     # Misc
