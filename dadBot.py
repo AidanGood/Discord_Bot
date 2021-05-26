@@ -72,9 +72,9 @@ async def on_message(message):
     elif "play" in message.content.lower():
         response = "Are ya winning son?"
         await message.channel.send(response)
-    elif "owl" in message.content.lower():
-        response = "Did you know that the Great Horned Owl doesn't actually have horns?"
-        await message.channel.send(response)
+    # elif "owl" in message.content.lower():
+    #     response = "Did you know that the Great Horned Owl doesn't actually have horns?"
+    #     await message.channel.send(response)
     elif " lost" in message.content.lower():
         response = "Don't worry, I'm sure you will do better next time."
         await message.channel.send(response)
@@ -93,6 +93,10 @@ async def on_message(message):
             response = f"No you're {person}, I'm Dad!"
             await message.channel.send(response)
         elif "i'm dad" in message.content.lower():
+            person = str(message.author.display_name)
+            response = f"No you're {person}, I'm Dad!"
+            await message.channel.send(response)
+        elif "i am dad" in message.content.lower():
             person = str(message.author.display_name)
             response = f"No you're {person}, I'm Dad!"
             await message.channel.send(response)
