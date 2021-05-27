@@ -12,18 +12,22 @@ client = discord.Client()
 
 dad_jokes = ["I\'m afraid for the calendar. Its days are numbered.",
              "Owls have horns",
-             "The Fortnite Team Captain is really cool",
              "We should emulate the french more, down with the presidency!",
              "Singing in the shower is fun until you get soap in your mouth. Then it's a soap opera.",
              "How do you follow Will Smith in the snow? You follow the fresh prints.",
-             "What did the ocean say to the beach?" "Nothing, it just waved.",
+             "What did the ocean say to the beach? Nothing, it just waved.",
              "I only know 25 letters of the alphabet. I don't know y.",
              "What did one wall say to the other? I'll meet you at the corner.",
              "What did the zero say to the eight? That belt looks good on you.",
-             "I asked my dog what's two minus two. He said nothing."]
+             "I asked my dog what's two minus two. He said nothing.",
+             "Want to know why nurses like red crayons? Sometimes they have to draw blood.",
+             "What would the Terminator be called in his retirement? The Exterminator.",
+             "My wife asked me to go get 6 cans of Sprite from the grocery store. I realized when I got home that I had picked 7 up.",
+             "What’s the most detail-oriented ocean? The Pacific.",
+             "Did you hear about the kidnapping at school? It’s fine, he woke up."]
 
 ''' E-sports food channel ID: 754131940243931199 
-    Test server food channel ID: 846089092281401354
+    Test server food channel ID: 846089092281401354,
     Cole's ID: 223820544909246464
     '''
 global cooldown
@@ -138,7 +142,7 @@ async def on_message(message):
             await message.channel.send(response)
         else:
             rand_int = random.random()
-            if rand_int > 0.8:
+            if rand_int > 0.90:
                 response = "Someone mention me?"
                 await message.channel.send(response)
 
