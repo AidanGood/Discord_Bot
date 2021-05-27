@@ -26,9 +26,12 @@ dad_jokes = ["I\'m afraid for the calendar. Its days are numbered.",
     Test server food channel ID: 846089092281401354
     Cole's ID: 223820544909246464
     '''
+global cooldown
+cooldown = 0
 
 
 async def background_task():
+    global cooldown
     await client.wait_until_ready()
 
     while not client.is_closed():
@@ -41,6 +44,7 @@ async def background_task():
                         channel = client.get_channel(754131940243931199)
                         await channel.send(response)
             await asyncio.sleep(1)
+            cooldown = 0
         except Exception as e:
             print(str(e))
             await asyncio.sleep(5)
@@ -53,6 +57,10 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    global cooldown
+    if cooldown == 1:
+        return
+
     if message.author == client.user:
         return
 
@@ -65,6 +73,9 @@ async def on_message(message):
     if message.content.startswith("d!help"):
         response = "Type `d!help` to see a list of words that I will respond to!"
         await message.channel.send(response)
+
+    if message.content.startswith("d!version"):
+        response = "I am Gamer Dad Bot revision 1.1.0"
 
     message_list = message.content.split()
     # Misc
@@ -94,7 +105,7 @@ async def on_message(message):
         await message.channel.send(response)
 
     # Dad specific Responses
-    elif "dad" in message_list:
+    elif "dad" in [word.lower() for word in message_list]:
         # Defending being the only dad
         if "im dad" in message.content.lower():
             person = str(message.author.display_name)
@@ -160,6 +171,8 @@ async def on_message(message):
             new_message = message.content[message.content.find("lm") + 3:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
+
+    cooldown = 1
 
 client.loop.create_task(background_task())
 client.run(os.getenv('DISCORD_TOKEN'))
