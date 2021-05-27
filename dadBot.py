@@ -75,7 +75,7 @@ async def on_message(message):
         await message.channel.send(response)
 
     if message.content.startswith("d!version"):
-        response = "I am Gamer Dad Bot running dadBot V1.1.2"
+        response = "I am Gamer Dad Bot running dadBot V1.1.3"
         await message.channel.send(response)
 
     message_list = message.content.split()
@@ -137,7 +137,7 @@ async def on_message(message):
             response = f"{person} best person"
             await message.channel.send(response)
         else:
-            rand_int = random.randint(0,1)
+            rand_int = random.random()
             if rand_int > 0.8:
                 response = "Someone mention me?"
                 await message.channel.send(response)
