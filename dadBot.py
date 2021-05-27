@@ -75,7 +75,8 @@ async def on_message(message):
         await message.channel.send(response)
 
     if message.content.startswith("d!version"):
-        response = "I am Gamer Dad Bot revision 1.1.0"
+        response = "I am Gamer Dad Bot running dadBot V1.1.1"
+        await message.channel.send(response)
 
     message_list = message.content.split()
     # Misc
