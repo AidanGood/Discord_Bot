@@ -10,7 +10,8 @@ load_dotenv()
 
 client = discord.Client()
 
-dad_jokes = ["I\'m afraid for the calendar. Its days are numbered.", "Owls have horns",
+dad_jokes = ["I\'m afraid for the calendar. Its days are numbered.",
+             "Owls have horns",
              "The Fortnite Team Captain is really cool",
              "We should emulate the french more, down with the presidency!",
              "Singing in the shower is fun until you get soap in your mouth. Then it's a soap opera.",
@@ -35,9 +36,10 @@ async def background_task():
             gmt = time.gmtime()  # NOTE: GMT time zone
             if {gmt.tm_hour, gmt.tm_min, gmt.tm_sec} == {8, 20, 0}:  # Bison Time is 8:20 GMT
                 if gmt.tm_min == 20:
-                    response = "It's Bison Time!"
-                    channel = client.get_channel(754131940243931199)
-                    await channel.send(response)
+                    if gmt.tm_hour == 8:
+                        response = "It's Bison Time!"
+                        channel = client.get_channel(754131940243931199)
+                        await channel.send(response)
             await asyncio.sleep(1)
         except Exception as e:
             print(str(e))
@@ -64,29 +66,35 @@ async def on_message(message):
         response = "Type `d!help` to see a list of words that I will respond to!"
         await message.channel.send(response)
 
+    message_list = message.content.split()
     # Misc
-    if "shut up" in message.content.lower() or "stfu" in message.content.lower():
+    if "shut" in message_list:
+        if "up" in message_list:
+            person = str(message.author.display_name)
+            response = f"Hey {person}, that wasn\'t very nice, so please apologize to the whole server and then take your own advice and \"shut the \*\*\*\* up\"."
+            await message.channel.send(response)
+    elif "stfu" in message_list:
         person = str(message.author.display_name)
         response = f"Hey {person}, that wasn\'t very nice, so please apologize to the whole server and then take your own advice and \"shut the \*\*\*\* up\"."
         await message.channel.send(response)
-    elif "play" in message.content.lower():
+    elif "play" in message_list:
         response = "Are ya winning son?"
         await message.channel.send(response)
     # elif "owl" in message.content.lower():
     #     response = "Did you know that the Great Horned Owl doesn't actually have horns?"
     #     await message.channel.send(response)
-    elif " lost" in message.content.lower():
+    elif "lost" in message_list:
         response = "Don't worry, I'm sure you will do better next time."
         await message.channel.send(response)
-    elif " jyro" in message.content.lower():
-        if "president" in message.content.lower():
+    elif "jyro" in message_list:
+        if "president" in message_list:
             response = "Not my president"
         else:
             response = "That's Mr. Club President Jyro to you!"
         await message.channel.send(response)
 
     # Dad specific Responses
-    elif "dad" in message.content.lower():
+    elif "dad" in message_list:
         # Defending being the only dad
         if "im dad" in message.content.lower():
             person = str(message.author.display_name)
@@ -124,31 +132,31 @@ async def on_message(message):
 
     # Infamous "Hi __ , I'm Dad!"
     else:
-        if "im " in message.content:
+        if "im " in message_list:
             new_message = message.content[message.content.find("im") + 3:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "Im " in message.content:
+        elif "Im " in message_list:
             new_message = message.content[message.content.find("Im") + 3:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "i'm " in message.content:
+        elif "i'm " in message_list:
             new_message = message.content[message.content.find("i'm") + 4:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "I'm " in message.content:
+        elif "I'm " in message_list:
             new_message = message.content[message.content.find("I'm") + 4:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "i am " in message.content:
+        elif "i am " in message_list:
             new_message = message.content[message.content.find("i am") + 5:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "I am " in message.content:
+        elif "I am " in message_list:
             new_message = message.content[message.content.find("I am") + 5:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "lm " in message.content:
+        elif "lm " in message_list:
             new_message = message.content[message.content.find("lm") + 3:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
