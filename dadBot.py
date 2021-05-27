@@ -26,8 +26,6 @@ dad_jokes = ["I\'m afraid for the calendar. Its days are numbered.",
     Test server food channel ID: 846089092281401354
     Cole's ID: 223820544909246464
     '''
-global cooldown
-cooldown = 0
 
 
 async def background_task():
@@ -44,7 +42,6 @@ async def background_task():
                         channel = client.get_channel(754131940243931199)
                         await channel.send(response)
             await asyncio.sleep(1)
-            cooldown = 0
         except Exception as e:
             print(str(e))
             await asyncio.sleep(5)
@@ -57,9 +54,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    global cooldown
-    if cooldown == 1:
-        return
 
     if message.author == client.user:
         return
@@ -143,36 +137,35 @@ async def on_message(message):
 
     # Infamous "Hi __ , I'm Dad!"
     else:
-        if "im " in message_list:
+        if "im" in message_list:
             new_message = message.content[message.content.find("im") + 3:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "Im " in message_list:
+        elif "Im" in message_list:
             new_message = message.content[message.content.find("Im") + 3:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "i'm " in message_list:
+        elif "i'm" in message_list:
             new_message = message.content[message.content.find("i'm") + 4:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "I'm " in message_list:
+        elif "I'm" in message_list:
             new_message = message.content[message.content.find("I'm") + 4:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "i am " in message_list:
+        elif "i am" in message_list:
             new_message = message.content[message.content.find("i am") + 5:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "I am " in message_list:
+        elif "I am" in message_list:
             new_message = message.content[message.content.find("I am") + 5:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
-        elif "lm " in message_list:
+        elif "lm" in message_list:
             new_message = message.content[message.content.find("lm") + 3:]
             await message.channel.send(f"Hi {new_message}, I'm Dad!")
 
 
-    cooldown = 1
 
 client.loop.create_task(background_task())
 client.run(os.getenv('DISCORD_TOKEN'))
