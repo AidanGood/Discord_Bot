@@ -144,32 +144,32 @@ async def on_message(message):
     # Infamous "Hi __ , I'm Dad!"
     else:
         if "im" in message_list:
-            new_message = message.content[message.content.find("im") + 3:]
-            await message.channel.send(f"Hi {new_message}, I'm Dad!")
+            new_message = message.content[message.content.find("im") + 2:]
+            await message.channel.send(f"Hi{new_message}, I'm Dad!")
 
         elif "Im" in message_list:
-            new_message = message.content[message.content.find("Im") + 3:]
-            await message.channel.send(f"Hi {new_message}, I'm Dad!")
+            new_message = message.content[message.content.find("Im") + 2:]
+            await message.channel.send(f"Hi{new_message}, I'm Dad!")
 
         elif "i'm" in message_list:
-            new_message = message.content[message.content.find("i'm") + 4:]
-            await message.channel.send(f"Hi {new_message}, I'm Dad!")
+            new_message = message.content[message.content.find("i'm") + 3:]
+            await message.channel.send(f"Hi{new_message}, I'm Dad!")
 
         elif "I'm" in message_list:
-            new_message = message.content[message.content.find("I'm") + 4:]
-            await message.channel.send(f"Hi {new_message}, I'm Dad!")
+            new_message = message.content[message.content.find("I'm") + 3:]
+            await message.channel.send(f"Hi{new_message}, I'm Dad!")
 
         elif "i am" in message_list:
-            new_message = message.content[message.content.find("i am") + 5:]
-            await message.channel.send(f"Hi {new_message}, I'm Dad!")
+            new_message = message.content[message.content.find("i am") + 4:]
+            await message.channel.send(f"Hi{new_message}, I'm Dad!")
 
         elif "I am" in message_list:
-            new_message = message.content[message.content.find("I am") + 5:]
-            await message.channel.send(f"Hi {new_message}, I'm Dad!")
+            new_message = message.content[message.content.find("I am") + 4:]
+            await message.channel.send(f"Hi{new_message}, I'm Dad!")
 
         elif "lm" in message_list:
-            new_message = message.content[message.content.find("lm") + 3:]
-            await message.channel.send(f"Hi {new_message}, I'm Dad!")
+            new_message = message.content[message.content.find("lm") + 2:]
+            await message.channel.send(f"Hi{new_message}, I'm Dad!")
 
 
     cooldown = 1
