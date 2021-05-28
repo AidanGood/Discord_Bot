@@ -85,7 +85,7 @@ async def on_message(message):
 
     if message.content.startswith("d!advice"):
         if message.author.id == 402538937631113227:
-            response = "When betting on homework grades, lower is better!"
+            response = ""
             await message.channel.send(response)
 
 
@@ -95,8 +95,8 @@ async def on_message(message):
         #if message.author.id == 402538937631113227:
             #channel = client.get_channel(781689646883012609)
 
-        response = "walter"
-        await message.channel.send(response, file=discord.File("walter.jpg"))
+        response = "Sorry, no can do kiddo"
+        await message.channel.send(response)
 
     # Misc
     if "shut" in message_list:
