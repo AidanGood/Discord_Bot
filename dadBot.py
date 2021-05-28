@@ -83,6 +83,11 @@ async def on_message(message):
         response = "I am Gamer Dad Bot running dadBot V1.1.3"
         await message.channel.send(response)
 
+    if message.content.startswith("d!advice"):
+        if message.author.id == 402538937631113227:
+            response = "When betting on homework grades, lower is better!"
+            await message.channel.send(response)
+
 
 
     message_list = message.content.split()
