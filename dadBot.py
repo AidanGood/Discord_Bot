@@ -86,12 +86,12 @@ async def on_message(message):
 
 
     message_list = message.content.split()
-    if "pet" in message_list:
-        if message.author.id == 402538937631113227:
+    if "walter" in message_list:
+        #if message.author.id == 402538937631113227:
             #channel = client.get_channel(781689646883012609)
 
-            response = "Here is my pet walter"
-            await message.channel.send(response, file=discord.File("walter.jpg"))
+        response = "walter"
+        await message.channel.send(response, file=discord.File("walter.jpg"))
 
     # Misc
     if "shut" in message_list:
