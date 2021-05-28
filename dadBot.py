@@ -29,6 +29,7 @@ dad_jokes = ["I\'m afraid for the calendar. Its days are numbered.",
 ''' E-sports food channel ID: 754131940243931199 
     Test server food channel ID: 846089092281401354,
     Cole's ID: 223820544909246464
+    Pet channel ID: 781689646883012609
     '''
 global cooldown
 cooldown = 0
@@ -82,7 +83,16 @@ async def on_message(message):
         response = "I am Gamer Dad Bot running dadBot V1.1.3"
         await message.channel.send(response)
 
+
+
     message_list = message.content.split()
+    if "pet" in message_list:
+        if message.author.id == 402538937631113227:
+            channel = client.get_channel(781689646883012609)
+
+            response = "Here is my pet walter"
+            await channel.send(response, file=discord.File("walter.jpg"))
+
     # Misc
     if "shut" in message_list:
         if "up" in message_list:
