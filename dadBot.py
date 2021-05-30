@@ -80,7 +80,7 @@ async def on_message(message):
         await message.channel.send(response)
 
     if message.content.startswith("d!version"):
-        response = "I am Gamer Dad Bot running dadBot V1.1.3"
+        response = "I am Gamer Dad Bot running dadBot V1.1.7"
         await message.channel.send(response)
 
     if message.content.startswith("d!advice"):
@@ -88,14 +88,16 @@ async def on_message(message):
             response = ""
             await message.channel.send(response)
 
-
-
     message_list = message.content.split()
     if "walter" in message_list:
-        #if message.author.id == 402538937631113227:
-            #channel = client.get_channel(781689646883012609)
+        # if message.author.id == 402538937631113227:
+        # channel = client.get_channel(781689646883012609)
 
         response = "Sorry, no can do kiddo"
+        await message.channel.send(response)
+
+    if "morning" in message_list and "jules" in message_list:
+        response = "https://tenor.com/view/good-morning-jules-dogs-run-fat-pugs-gif-12882778"
         await message.channel.send(response)
 
     # Misc
@@ -162,6 +164,7 @@ async def on_message(message):
                 await message.channel.send(response)
 
     # Infamous "Hi __ , I'm Dad!"
+
     else:
         if "im" in message_list:
             new_message = message.content[message.content.find("im") + 2:]
@@ -191,8 +194,8 @@ async def on_message(message):
             new_message = message.content[message.content.find("lm") + 2:]
             await message.channel.send(f"Hi{new_message}, I'm Dad!")
 
-
     cooldown = 1
+
 
 client.loop.create_task(background_task())
 client.run(os.getenv('DISCORD_TOKEN'))
