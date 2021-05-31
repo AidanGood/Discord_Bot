@@ -26,6 +26,13 @@ dad_jokes = ["I\'m afraid for the calendar. Its days are numbered.",
              "What’s the most detail-oriented ocean? The Pacific.",
              "Did you hear about the kidnapping at school? It’s fine, he woke up."]
 
+good_mornings = ["https://tenor.com/view/good-morning-jules-dogs-run-fat-pugs-gif-12882778",
+                 "https://tenor.com/view/kisses-pugs-cute-dogs-good-morning-gif-12772901",
+                 "https://tenor.com/view/good-morning-jules-pugs-and-money-rich-make-it-rain-funny-animals-gif-12922098",
+                 "https://tenor.com/view/bacon-pug-hop-dogs-cute-gif-13564097",
+                 "https://tenor.com/view/pug-toilet-trap-good-morning-jules-gif-12863777"
+                 ]
+
 ''' E-sports food channel ID: 754131940243931199 
     Test server food channel ID: 846089092281401354,
     Cole's ID: 223820544909246464
@@ -97,7 +104,8 @@ async def on_message(message):
         await message.channel.send(response)
 
     if "morning" in message_list and "jules" in message_list:
-        response = "https://tenor.com/view/good-morning-jules-dogs-run-fat-pugs-gif-12882778"
+        random_index = random.randint(0, len(good_mornings) - 1)
+        response = good_mornings[random_index]
         await message.channel.send(response)
 
     # Misc
