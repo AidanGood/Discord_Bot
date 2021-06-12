@@ -52,9 +52,9 @@ async def background_task():
             if {gmt.tm_hour, gmt.tm_min, gmt.tm_sec} == {8, 20, 0}:  # Bison Time is 8:20 GMT
                 if gmt.tm_min == 20:
                     if gmt.tm_hour == 8:
-                        response = "Don't stay up too late kids!"
+                        response = "Bison Time!"
                         channel = client.get_channel(754131940243931199)
-                        await channel.send(response)
+                        # await channel.send(response)
             await asyncio.sleep(1)
             cooldown = 0
         except Exception as e:
