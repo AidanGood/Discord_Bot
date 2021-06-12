@@ -52,7 +52,7 @@ async def background_task():
             if {gmt.tm_hour, gmt.tm_min, gmt.tm_sec} == {8, 20, 0}:  # Bison Time is 8:20 GMT
                 if gmt.tm_min == 20:
                     if gmt.tm_hour == 8:
-                        response = "It's Bison Time!"
+                        response = "Don't stay up too late kids!"
                         channel = client.get_channel(754131940243931199)
                         await channel.send(response)
             await asyncio.sleep(1)
@@ -135,7 +135,7 @@ async def on_message(message):
         await message.channel.send(response)
 
     # Dad specific Responses
-    elif "dad" in [word.lower() for word in message_list]:
+    elif "dad" in message.content.lower():
         # Defending being the only dad
         if "im dad" in message.content.lower():
             person = str(message.author.display_name)
@@ -202,7 +202,6 @@ async def on_message(message):
             new_message = message.content[message.content.find("lm") + 2:]
             await message.channel.send(f"Hi{new_message}, I'm Dad!")
 
-    cooldown = 1
 
 
 client.loop.create_task(background_task())
