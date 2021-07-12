@@ -109,14 +109,13 @@ async def on_message(message):
         await message.channel.send(response)
 
     if "bison" in message.content.lower():
-        if message.channel.name == "food":
-            gmt = time.gmtime()  # NOTE: GMT time zone
-            if {gmt.tm_hour, gmt.tm_min} == {8, 20}:  # Bison Time is 8:20 GMT
-                if gmt.tm_min == 20:
-                    if gmt.tm_hour == 8:
-                        response = "Bison Time!"
-                        channel = client.get_channel(754131940243931199)
-                        await channel.send(response)
+        gmt = time.gmtime()  # NOTE: GMT time zone
+        if {gmt.tm_hour, gmt.tm_min} == {8, 20}:  # Bison Time is 8:20 GMT
+            if gmt.tm_min == 20:
+                if gmt.tm_hour == 8:
+                    response = "Bison Time!"
+                    channel = client.get_channel(754131940243931199)
+                    await channel.send(response)
 
     # Misc
     if "shut" in message_list:
