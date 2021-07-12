@@ -49,7 +49,7 @@ async def background_task():
     while not client.is_closed():
         try:
             gmt = time.gmtime()  # NOTE: GMT time zone
-            if {gmt.tm_hour, gmt.tm_min, gmt.tm_sec} == {8, 20, 0}:  # Bison Time is 8:20 GMT
+            if {gmt.tm_hour, gmt.tm_min} == {8, 20}:  # Bison Time is 8:20 GMT
                 if gmt.tm_min == 20:
                     if gmt.tm_hour == 8:
                         response = "Bison Time!"
@@ -107,6 +107,15 @@ async def on_message(message):
         random_index = random.randint(0, len(good_mornings) - 1)
         response = good_mornings[random_index]
         await message.channel.send(response)
+
+    if "bison" in message.content.lower():
+        gmt = time.gmtime()  # NOTE: GMT time zone
+        if {gmt.tm_hour, gmt.tm_min} == {8, 20}:  # Bison Time is 8:20 GMT
+            if gmt.tm_min == 20:
+                if gmt.tm_hour == 8:
+                    response = "Bison Time!"
+                    channel = client.get_channel(754131940243931199)
+                    await channel.send(response)
 
     # Misc
     if "shut" in message_list:
