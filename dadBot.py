@@ -116,7 +116,12 @@ async def on_message(message):
                     response = "Bison Time!"
                     channel = client.get_channel(754131940243931199)
                     await channel.send(response)
-
+        elif {gmt.tm_hour, gmt.tm_min} == {10, 20}:
+            if gmt.tm_min == 20:
+                if gmt.tm_hour == 10:
+                    response = "Le temps des Bison!"
+                    channel = client.get_channel(754131940243931199)
+                    await channel.send(response)
     # Misc
     if "shut" in message_list:
         if "up" in message_list:
