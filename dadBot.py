@@ -42,7 +42,6 @@ good_mornings = ["https://tenor.com/view/good-morning-jules-dogs-run-fat-pugs-gi
 global cooldown
 cooldown = 0
 
-
 async def background_task():
     global cooldown
     await client.wait_until_ready()
