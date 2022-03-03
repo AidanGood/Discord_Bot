@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import random
 import time
 import asyncio
+import re
 
 load_dotenv()
 
@@ -87,20 +88,12 @@ async def on_message(message):
         await message.channel.send(response)
 
     if message.content.startswith("d!version"):
-        response = "I am Gamer Dad Bot running dadBot V1.1.7"
+        response = "I am Dad Bot running dadBot V1.1.7"
         await message.channel.send(response)
-
-    if message.content.startswith("d!advice"):
-        if message.author.id == 402538937631113227:
-            response = ""
-            await message.channel.send(response)
 
     message_list = message.content.split()
     if "walter" in message_list:
-        # if message.author.id == 402538937631113227:
-        # channel = client.get_channel(781689646883012609)
-
-        response = "Sorry, no can do kiddo"
+        response = "https://tenor.com/view/walter-dogs-bull-terrier-dog-white-gif-15701500"
         await message.channel.send(response)
 
     if "morning" in message_list and "jules" in message_list:
@@ -109,29 +102,19 @@ async def on_message(message):
         await message.channel.send(response)
 
     if "bison" in message.content.lower():
-        gmt = time.gmtime()  # NOTE: GMT time zone
-        if {gmt.tm_hour, gmt.tm_min} == {8, 20}:  # Bison Time is 8:20 GMT
-            if gmt.tm_min == 20:
-                if gmt.tm_hour == 8:
-                    response = "Bison Time!"
-                    channel = client.get_channel(754131940243931199)
-                    await channel.send(response)
-        elif {gmt.tm_hour, gmt.tm_min} == {2, 20}:
-            if gmt.tm_min == 20:
-                if gmt.tm_hour == 2:
-                    response = "Le temps des Bison!"
-                    channel = client.get_channel(754131940243931199)
-                    await channel.send(response)
+       gmt = time.gmtime()  # NOTE: GMT time zone
+       if gmt.tm_min == 20 :  # Bison Time is 8:20 GMT
+           if gmt.tm_min == 20:
+                response = "Bison Time!"
+                channel = client.get_channel(754131940243931199)
+                await channel.send(response)
+
     # Misc
     if "shut" in message_list:
         if "up" in message_list:
             person = str(message.author.display_name)
             response = f"Hey {person}, that wasn\'t very nice, so please apologize to the whole server and then take your own advice and \"shut the \*\*\*\* up\"."
             await message.channel.send(response)
-    elif "stfu" in message_list:
-        person = str(message.author.display_name)
-        response = f"Hey {person}, that wasn\'t very nice, so please apologize to the whole server and then take your own advice and \"shut the \*\*\*\* up\"."
-        await message.channel.send(response)
     elif "play" in message_list:
         response = "Are ya winning son?"
         await message.channel.send(response)
@@ -140,12 +123,6 @@ async def on_message(message):
     #     await message.channel.send(response)
     elif "lost" in message_list:
         response = "Don't worry, I'm sure you will do better next time."
-        await message.channel.send(response)
-    elif "jyro" in message_list:
-        if "president" in message_list:
-            response = "Not my president"
-        else:
-            response = "That's Mr. Club President Jyro to you!"
         await message.channel.send(response)
 
     # Dad specific Responses
@@ -172,51 +149,28 @@ async def on_message(message):
             person = str(message.author.display_name)
             response = f"Hello {person}, keep up the great work!"
             await message.channel.send(response)
-        elif "thanks dad" in message.content.lower():
+        elif "thanks" in message.content.lower():
             response = "No problem!"
             await message.channel.send(response)
-        elif "dad bot best bot" in message.content.lower():
+        elif "love you" in message.content.lower():
             person = str(message.author.display_name)
-            response = f"{person} best person"
+            response = f"{person}, I love you too"
             await message.channel.send(response)
         else:
             rand_int = random.random()
-            if rand_int > 0.90:
-                response = "Someone mention me?"
+            if rand_int > 0.60:
+                response = "Did somebody call me?"
                 await message.channel.send(response)
 
     # Infamous "Hi __ , I'm Dad!"
-
     else:
-        if "im" in message_list:
-            new_message = message.content[message.content.find("im") + 2:]
-            await message.channel.send(f"Hi{new_message}, I'm Dad!")
+        regex = re.compile(r"\bi\'m\b|\bim\b|\bl\'m\b|\blm\b")
+        string = message.content.lower()
 
-        elif "Im" in message_list:
-            new_message = message.content[message.content.find("Im") + 2:]
-            await message.channel.send(f"Hi{new_message}, I'm Dad!")
+        match = re.search(regex, string)
+        if match:
+            statement = re.split(regex, string, 1)[1]
+            await message.channel.send(f"Hi{statement}, I'm Dad!")
 
-        elif "i'm" in message_list:
-            new_message = message.content[message.content.find("i'm") + 3:]
-            await message.channel.send(f"Hi{new_message}, I'm Dad!")
-
-        elif "I'm" in message_list:
-            new_message = message.content[message.content.find("I'm") + 3:]
-            await message.channel.send(f"Hi{new_message}, I'm Dad!")
-
-        elif "i am" in message_list:
-            new_message = message.content[message.content.find("i am") + 4:]
-            await message.channel.send(f"Hi{new_message}, I'm Dad!")
-
-        elif "I am" in message_list:
-            new_message = message.content[message.content.find("I am") + 4:]
-            await message.channel.send(f"Hi{new_message}, I'm Dad!")
-
-        elif "lm" in message_list:
-            new_message = message.content[message.content.find("lm") + 2:]
-            await message.channel.send(f"Hi{new_message}, I'm Dad!")
-
-
-
-# client.loop.create_task(background_task())
+client.loop.create_task(background_task())
 client.run(os.getenv('DISCORD_TOKEN'))
