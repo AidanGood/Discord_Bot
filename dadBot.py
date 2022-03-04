@@ -102,7 +102,7 @@ async def on_message(message):
 
     if "bison" in message.content.lower():
        gmt = time.gmtime()  # NOTE: GMT time zone
-       if gmt.tm_min == 20 :  # Bison Time is 8:20 GMT
+       if gmt.tm_min == 20 :  # Bison Time is x:20 GMT
            if gmt.tm_min == 20:
                 response = "Bison Time!"
                 channel = client.get_channel(754131940243931199)
@@ -127,15 +127,10 @@ async def on_message(message):
     # Dad specific Responses
     elif "dad" in message.content.lower():
         # Defending being the only dad
-        if "im dad" in message.content.lower():
-            person = str(message.author.display_name)
-            response = f"No you're {person}, I'm Dad!"
-            await message.channel.send(response)
-        elif "i'm dad" in message.content.lower():
-            person = str(message.author.display_name)
-            response = f"No you're {person}, I'm Dad!"
-            await message.channel.send(response)
-        elif "i am dad" in message.content.lower():
+        regex = re.compile(r"\bi\'m\b|\bim\b|\bl\'m\b|\blm\b")
+        string = message.content.lower()
+        match = re.search(regex, string)
+        if match:
             person = str(message.author.display_name)
             response = f"No you're {person}, I'm Dad!"
             await message.channel.send(response)
@@ -171,5 +166,5 @@ async def on_message(message):
             statement = re.split(regex, string, 1)[1]
             await message.channel.send(f"Hi{statement}, I'm Dad!")
 
-client.loop.create_task(background_task())
+# client.loop.create_task(background_task())
 client.run(os.getenv('DISCORD_TOKEN'))
