@@ -43,6 +43,7 @@ global cooldown
 cooldown = 0
 
 async def background_task():
+    ''' Not properly working'''
     global cooldown
     await client.wait_until_ready()
 
@@ -69,10 +70,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    global cooldown
-    if cooldown == 1:
-        return
-
     if message.author == client.user:
         return
 
@@ -87,7 +84,7 @@ async def on_message(message):
         await message.channel.send(response)
 
     if message.content.startswith("d!version"):
-        response = "I am Dad Bot running dadBot V1.1.7"
+        response = "I am GamerDadBot running dadBot V2.0.0 \n Now with 42% more Dad!"
         await message.channel.send(response)
 
     message_list = message.content.split()
@@ -101,9 +98,9 @@ async def on_message(message):
         await message.channel.send(response)
 
     if "bison" in message.content.lower():
-       gmt = time.gmtime()  # NOTE: GMT time zone
-       if gmt.tm_min == 20 :  # Bison Time is x:20 GMT
-           if gmt.tm_min == 20:
+        gmt = time.gmtime()  # NOTE: GMT time zone
+        if gmt.tm_min == 20 :  # Bison Time is x:20 GMT
+            if gmt.tm_min == 20:
                 response = "Bison Time!"
                 channel = client.get_channel(754131940243931199)
                 await channel.send(response)
@@ -127,13 +124,14 @@ async def on_message(message):
     # Dad specific Responses
     elif "dad" in message.content.lower():
         # Defending being the only dad
-        regex = re.compile(r"\bi\'m\b|\bim\b|\bl\'m\b|\blm\b")
+        regex = re.compile(r"\bi\'m\b|\bim\b|\bl\'m\b|\blm\b|\bi am\b")
         string = message.content.lower()
         match = re.search(regex, string)
         if match:
             person = str(message.author.display_name)
             response = f"No you're {person}, I'm Dad!"
             await message.channel.send(response)
+            
         # Respond to a hello
         elif "hi dad" in message.content.lower():
             person = str(message.author.display_name)
@@ -143,24 +141,28 @@ async def on_message(message):
             person = str(message.author.display_name)
             response = f"Hello {person}, keep up the great work!"
             await message.channel.send(response)
-        elif "thanks" in message.content.lower():
-            response = "No problem!"
-            await message.channel.send(response)
-        elif "love you" in message.content.lower():
-            person = str(message.author.display_name)
-            response = f"{person}, I love you too"
-            await message.channel.send(response)
+        
+        # Use GPT-2 to generate a response and hope it is good
         else:
-            rand_int = random.random()
+            rand_int = random.random() # Rand int from 0 - 1
             if rand_int > 0.60:
-                response = "Did somebody call me?"
+                prefix_text = f"{message.content}?"
+                generated_text= text_generation(prefix_text, max_length=35, do_sample=False)[0]
+                len_message = len(message.content)
+                new_gen_text = generated_text['generated_text'][len_message:]
+                response = ""
+                loc = new_gen_text.find(".")
+                if loc < 0:
+                    response = "I don't know how to answer that, sorry"
+                for character in new_gen_text[:loc]:
+                    if character != '\n':
+                        response += character
                 await message.channel.send(response)
 
     # Infamous "Hi __ , I'm Dad!"
     else:
-        regex = re.compile(r"\bi\'m\b|\bim\b|\bl\'m\b|\blm\b")
+        regex = re.compile(r"\bi\'m\b|\bim\b|\bl\'m\b|\blm\b|\bi am\b")
         string = message.content.lower()
-
         match = re.search(regex, string)
         if match:
             statement = re.split(regex, string, 1)[1]
