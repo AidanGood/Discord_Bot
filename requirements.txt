@@ -2,3 +2,15 @@
 python-dotenv~=0.17.1
 discord.py
 torch==1.11.0+cpu
+packaging
+pyparsing
+tqdm
+six
+regex
+pyyaml
+joblib
+filelock
+click
+tokenizers
+sacremoses
+huggingface-hub
