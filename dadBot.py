@@ -7,7 +7,7 @@ import time
 import asyncio
 import re
 from transforma import pipeline
-text_generation = pipeline("text-generation", model='gpt-large')
+text_generation = pipeline("text-generation", model='gpt-medium')
 
 load_dotenv()
 
