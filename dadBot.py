@@ -6,7 +6,7 @@ import random
 import time
 import asyncio
 import re
-from transforma import pipeline
+from transformers import pipeline
 text_generation = pipeline("text-generation", model='gpt-medium')
 
 load_dotenv()
