@@ -1,4 +1,4 @@
-# Gamer Dad Bot
+# Dad Bot
 import os
 import discord
 from dotenv import load_dotenv
@@ -6,7 +6,7 @@ import random
 import time
 import asyncio
 import re
-from transformers import pipeline
+from transforma import pipeline
 text_generation = pipeline("text-generation", model='gpt-large')
 
 load_dotenv()
