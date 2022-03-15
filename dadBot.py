@@ -149,7 +149,7 @@ async def on_message(message):
             prefix_text = f"{message.content}?"
             generated_text= text_generation(prefix_text, max_length=35, do_sample=False)[0]
             len_message = len(message.content)
-            new_gen_text = generated_text['generated_text'][len_message:]
+            new_gen_text = generated_text['generated_text'][len_message+1:]
             response = ""
             loc = new_gen_text.find(".")
             if loc < 0:
