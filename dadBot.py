@@ -7,7 +7,7 @@ import time
 import asyncio
 import re
 from transformers import pipeline
-text_generation = pipeline("text-generation", model='gpt-medium')
+text_generation = pipeline("text-generation", model='gpt2-medium')
 
 load_dotenv()
 
