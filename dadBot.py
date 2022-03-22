@@ -143,6 +143,10 @@ async def on_message(message):
             person = str(message.author.display_name)
             response = f"Hello {person}, keep up the great work!"
             await message.channel.send(response)
+        elif "joke" in message.content.lower():
+            random_index = random.randint(0, len(dad_jokes) - 1)
+            response = dad_jokes[random_index]
+            await message.channel.send(response)
         
         # Use GPT-2 to generate a response and hope it is good
         else:
@@ -154,9 +158,10 @@ async def on_message(message):
             loc = new_gen_text.find(".")
             if loc < 0:
                 response = "I don't know how to answer that, sorry"
-            for character in new_gen_text[:loc]:
-                if character != '\n':
-                    response += character
+            else:
+                for character in new_gen_text[:loc]:
+                    if character != '\n':
+                        response += character
             await message.channel.send(response)
 
     # Infamous "Hi __ , I'm Dad!"
