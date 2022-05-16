@@ -150,16 +150,16 @@ async def on_message(message):
         
         # Use GPT-2 to generate a response and hope it is good
         else:
-            prefix_text = f"{message.content}?"
+            prefix_text = f"A child says to their father, '{message.content}'. The father replied, '"
             generated_text= text_generation(prefix_text, max_length=35, do_sample=False)[0]
-            len_message = len(message.content)
-            new_gen_text = generated_text['generated_text'][len_message+1:]
+            length = len(prefix_text)
+            new_gen_text = generated_text['generated_text'][length:]
             response = ""
             loc = new_gen_text.find(".")
             if loc < 0:
                 response = "I don't know how to answer that, sorry"
             else:
-                for character in new_gen_text[:loc]:
+                for character in new_gen_text[:loc - 1]:
                     if character != '\n':
                         response += character
             await message.channel.send(response)
