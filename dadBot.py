@@ -12,7 +12,7 @@ text_generation = pipeline("text-generation", model='gpt2')
 load_dotenv()
 
 client = discord.Client()
-
+#hi
 dad_jokes = ["I\'m afraid for the calendar. Its days are numbered.",
              "Owls have horns",
              "We should emulate the french more, down with the presidency!",
