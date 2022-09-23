@@ -7,12 +7,12 @@ import time
 import asyncio
 import re
 from transformers import pipeline
-text_generation = pipeline("text-generation", model='gpt2')
+text_generation = pipeline("text-generation", model='gpt2-medium')
 
 load_dotenv()
 
 client = discord.Client()
-#hi
+
 dad_jokes = ["I\'m afraid for the calendar. Its days are numbered.",
              "Owls have horns",
              "We should emulate the french more, down with the presidency!",
@@ -41,12 +41,9 @@ good_mornings = ["https://tenor.com/view/good-morning-jules-dogs-run-fat-pugs-gi
     Cole's ID: 223820544909246464
     Pet channel ID: 781689646883012609
     '''
-global cooldown
-cooldown = 0
 
 async def background_task():
-    ''' Not properly working'''
-    global cooldown
+    ''' I changed this, it broke. Did it another way but leaving this here for future reference'''
     await client.wait_until_ready()
 
     while not client.is_closed():
@@ -59,7 +56,6 @@ async def background_task():
                         channel = client.get_channel(754131940243931199)
                         await channel.send(response)
             await asyncio.sleep(1)
-            cooldown = 0
         except Exception as e:
             print(str(e))
             await asyncio.sleep(5)
@@ -111,14 +107,14 @@ async def on_message(message):
     if "shut" in message_list:
         if "up" in message_list:
             person = str(message.author.display_name)
-            response = f"Hey {person}, that wasn\'t very nice, so please apologize to the whole server and then take your own advice and \"shut the \*\*\*\* up\"."
+            response = f"Hey {person}, that wasn\'t very nice, so please apologize to the whole server and then take your own advice and \"shut up\"."
             await message.channel.send(response)
     elif "play" in message_list:
         response = "Are ya winning son?"
         await message.channel.send(response)
-    # elif "owl" in message.content.lower():
-    #     response = "Did you know that the Great Horned Owl doesn't actually have horns?"
-    #     await message.channel.send(response)
+    elif "owl" in message.content.lower():
+        response = "Did you know that the Great Horned Owl doesn't actually have horns?"
+        await message.channel.send(response)
     elif "lost" in message_list:
         response = "Don't worry, I'm sure you will do better next time."
         await message.channel.send(response)
@@ -150,18 +146,21 @@ async def on_message(message):
         
         # Use GPT-2 to generate a response and hope it is good
         else:
-            prefix_text = f"A child says to their father, '{message.content}'. The father replied, '"
-            generated_text= text_generation(prefix_text, max_length=35, do_sample=False)[0]
+            prefix_text = f"A dad and his child are walking home. The child says to their dad, '{message.content}'. The dad replied, '"
             length = len(prefix_text)
+            generated_text= text_generation(prefix_text, max_length=50, do_sample=False)[0]
             new_gen_text = generated_text['generated_text'][length:]
             response = ""
             loc = new_gen_text.find(".")
             if loc < 0:
-                response = "I don't know how to answer that, sorry"
+                response = "I don't know how to answer that"
             else:
-                for character in new_gen_text[:loc - 1]:
+                for character in new_gen_text[:loc]:
                     if character != '\n':
                         response += character
+            if response[-1] == "'":
+                response = response[:-1]
+
             await message.channel.send(response)
 
     # Infamous "Hi __ , I'm Dad!"
